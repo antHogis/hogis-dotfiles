@@ -1,0 +1,118 @@
+{
+    "include": [
+        "/usr/share/sway/templates/waybar/config.jsonc"
+    ],
+
+    "layer": "top",
+
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 30,
+    "position": "top",
+
+    "modules-left": ["sway/workspaces", "custom/scratchpad"],
+    "modules-center": [
+        "custom/wf-recorder",
+        "sway/mode",
+        //"custom/weather"
+        "sway/window"
+    ],
+    "modules-right": [
+        "cpu",
+        "memory",
+        "battery",
+        "custom/separator",
+        "pulseaudio",
+        "network",
+        "bluetooth",
+        "custom/sunset",
+        "custom/separator",
+        "sway/language",
+        "custom/separator",
+        "clock"
+//       "temperature",
+//       "idle_inhibitor",
+//       "custom/dnd",
+//       "backlight",
+//       "custom/adaptive-light",
+//       "tray",
+//       "custom/github",
+//       "custom/clipboard",
+//       "custom/zeit",
+    ],
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+    "battery": {
+        "interval": 30,
+        "states": {
+            "medium": 50,
+            "warning": 30,
+            "critical": 15
+        },
+        "format-charging": "󰂄 {capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󱃍", "󰁺", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip": true
+    },
+    "clock": {
+        "interval": 60,
+        "format": "{:%H:%M %a %d/%m}",
+        "tooltip": true,
+        "tooltip-format": "{:%a %e %b %Y}",
+        "on-click": "swaymsg exec \\$calendar"
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "󰘚 {usage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "on-click": "swaymsg exec \\$once \\$term_float htop",
+        "tooltip": true
+    },
+    "memory": {
+        "interval": 10,
+        "format": "󰍛 {used}GB",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "on-click": "swaymsg exec \\$once \\$term_float htop",
+        "tooltip": true
+    },
+    "sway/language": {
+        "format": "{short}",
+        "min-length": 2,
+        "tooltip": true,
+        "tooltip-format": "{long}",
+        "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
+    },
+    "network": {
+        "interval": 5,
+        "format-wifi": " ",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "tooltip-format": "{icon} {ifname}: {ipaddr}",
+        "tooltip-format-ethernet": "{icon} {ifname}: {ipaddr}",
+        "tooltip-format-wifi": "{essid} ({ipaddr}): {bandwidthDownBytes} {bandwidthUpBytes}",
+        "tooltip-format-disconnected": "{icon} disconnected",
+        "tooltip-format-disabled": "{icon} disabled",
+        "on-click": "swaymsg exec \\$once \\$term_float nmtui connect"
+    },  
+    "sway/window": {
+        "format": "{title}",
+        "max-length": 50
+        //"rewrite": {
+        //    "^$": ""
+        //}
+    },
+    "custom/separator": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    }
+
+}

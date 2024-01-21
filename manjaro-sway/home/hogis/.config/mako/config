@@ -1,0 +1,16 @@
+layer=overlay
+format=<b>%s</b>\n%b
+font=Roboto 11
+width=350
+height=110
+padding=20
+margin=20
+border-size=2
+border-radius=10
+max-icon-size=64
+
+background-color=#141a1b
+text-color=#eeeeee
+border-color=#88ad62
+
+default-timeout=5000

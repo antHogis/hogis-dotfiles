@@ -1,0 +1,28 @@
+[user]
+	name = Anton Höglund
+	email = anton.hoglund@vinka.fi
+[core]
+	editor = vim
+[alias]
+    co = checkout
+    st = status
+    br = branch
+    cat = show
+    cp = cherry-pick
+    lg = log --pretty="%C(Yellow)%h%x20%C(reset)%ad%x20%C(Cyan)%an%x20%C(reset)%s%C(Green)%d%C(reset)" --date=short
+    ci = commit
+    cim = commit -m
+    back = reset --soft HEAD~1
+    uss = reset HEAD -- 
+    ush = checkout HEAD -- 
+    tagls = tag --sort=-taggerdate 
+    tree = log --graph --oneline --all
+    sd = diff --cached
+    stash-staged = "!bash -c \"git stash --keep-index; git stash push -m \"staged\" --keep-index; git stash pop stash@{1}\""
+[credential]
+	helper = cache --timeout=3600
+[pull]
+	rebase = false
+[push]
+    autoSetupRemote = true
+

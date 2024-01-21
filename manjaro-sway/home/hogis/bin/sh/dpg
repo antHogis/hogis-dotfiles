@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PGPASSWORD=vinka psql -h localhost -p 5432 -U vinka "${1-engine_dev}"
+

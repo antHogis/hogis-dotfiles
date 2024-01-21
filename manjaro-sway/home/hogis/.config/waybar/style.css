@@ -1,0 +1,156 @@
+@import "/usr/share/sway/templates/waybar/style.css";
+
+@define-color gruvbox_black #282828;
+@define-color gruvbox_red #CC241D;
+@define-color gruvbox_green #98971A;
+@define-color gruvbox_yellow #D79921;
+@define-color gruvbox_blue #458588;
+@define-color gruvbox_magenta #B16286;
+@define-color gruvbox_cyan #689D6A;
+@define-color gruvbox_white #A89984;
+@define-color gruvbox_orange #D65D0E;
+@define-color gruvbox_bright_black #928374;
+@define-color gruvbox_bright_red #FB4934;
+@define-color gruvbox_bright_green #B8BB26;
+@define-color gruvbox_bright_yellow #FABD2F;
+@define-color gruvbox_bright_blue #83A598;
+@define-color gruvbox_bright_magenta #D3869B;
+@define-color gruvbox_bright_cyan #8EC07C;
+@define-color gruvbox_bright_white #EBDFC0;
+@define-color gruvbox_bright_orange #FE8019;
+
+* {
+    font-family: "JetBrainsMono NF";
+    border-radius: 0.4rem;
+}
+
+window#waybar {
+    margin-top: 0;
+    padding: 0;
+    border-radius: 20px 20px 0px 0px;
+    background-color: transparent;
+    border-bottom: 0;
+    color: @gruvbox_green;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin-top: 10px;
+}
+
+.modules-center,
+.modules-right,
+#workspaces button 
+{
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    background: @gruvbox_black;
+}
+
+.modules-center,
+.modules-right
+{
+    color: @gruvbox_green;
+}
+
+#workspaces button
+{
+    color: @gruvbox_green;
+}
+
+window#waybar.empty .modules-center {
+    background-color: transparent;
+}
+
+#workspaces button.focused {
+    color: @gruvbox_black;
+    background-color: @gruvbox_green;
+    border-color: @gruvbox_green;
+}
+
+
+#window {
+    color: @gruvbox_bright_green;
+    padding: 0 5px; 
+}
+
+.modules-left {
+    margin-left: 10px;
+}
+
+.modules-right {
+    margin-left: 5px; 
+    margin-right: 10px
+}
+
+#workspaces button {
+    margin-right: 5px;
+}
+
+#cpu,
+#memory,
+#battery,
+#pulseaudio,
+#network,
+#language {
+    padding-left: 10px;
+    padding-right: 0px
+}
+
+#bluetooth,
+#custom-sunset {
+    padding-left: 15px;
+    padding-right: 0px
+}
+
+#custom-separator {
+    color: @gruvbox_white;
+    padding-left: 10px;
+}
+
+#clock {
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+#cpu {
+    color: @gruvbox_cyan;
+}
+
+#memory {
+    color: @gruvbox_magenta;
+}
+
+#battery {
+    color: @gruvbox_blue;
+}
+
+#pulseaudio {
+    color: @gruvbox_orange;
+}
+
+#network {
+    color: @gruvbox_green;
+}
+
+#bluetooth {
+    color: @gruvbox_bright_blue;
+}
+
+#custom-sunset {
+    color: @gruvbox_yellow;
+}
+
+#language {
+    color: @gruvbox_bright_magenta;
+}
+
+#clock {
+    font-size: 1em;
+    font-weight: normal;
+    background-color: @gruvbox_black;
+    color: @gruvbox_bright_green;
+}
+
+

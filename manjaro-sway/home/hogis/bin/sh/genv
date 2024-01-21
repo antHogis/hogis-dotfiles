@@ -1,0 +1,186 @@
+#!/usr/bin/env bash
+
+# Script for conveniently setting configs for gcp project, cluster and namespace by an env name.
+#
+# ARGS:
+# $1 - env name. E.g. demo.
+# $2 - namespace. Optional, a namespace is set automatically if none given.
+#
+
+set -o nounset
+set -o errexit
+set -o pipefail
+
+readonly GCP_ENV=$1
+ZONE=europe-north1-a
+REGION=europe-north1
+REGIONAL="false"
+
+# NOTE! Please keep the envs alphabetized for readability and maintainability
+case $GCP_ENV in
+"akaa-mh")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"akaa-mh"}"
+    ;;
+"cabonline")
+    readonly PROJECT="cabonline-vinka"
+    readonly CLUSTER="cabonline-autopilot"
+    readonly NAMESPACE="${2:-"cabonline"}"
+    REGIONAL="true"
+    ;;
+"demo")
+    readonly PROJECT="vinka-test"
+    readonly CLUSTER="test-1"
+    readonly NAMESPACE="${2:-"demo"}"
+    ;;
+"essote")
+    readonly PROJECT="sitowise"
+    readonly CLUSTER="prod-1"
+    readonly NAMESPACE="${2:-"essote"}"
+    ;;
+"keycloak-test")
+    readonly PROJECT="vinka-test"
+    readonly CLUSTER="test-1"
+    readonly NAMESPACE="${2:-"keycloak-test"}"
+    ;;
+"keycloak-prod")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"keycloak-prod"}"
+    ;;
+"ingsva-mh")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"ingsva-mh"}"
+    ;;
+"jytaksi")
+    readonly PROJECT="sitowise"
+    readonly CLUSTER="prod-1"
+    readonly NAMESPACE="${2:-"jytaksi"}"
+    ;;
+"ltx")
+    readonly PROJECT="router-group"
+    readonly CLUSTER="prod-1"
+    readonly NAMESPACE="${2:-"ltx"}"
+    ;;
+"matkahuolto-test")
+    readonly PROJECT="vinka-test"
+    readonly CLUSTER="test-1"
+    readonly NAMESPACE="${2:-"matkahuolto-test"}"
+    ;;
+"meneva")
+    readonly PROJECT="meneva"
+    readonly CLUSTER="meneva-1"
+    readonly NAMESPACE="${2:-"meneva"}"
+    ;;
+"meneva-ph")
+    readonly PROJECT="meneva"
+    readonly CLUSTER="meneva-1"
+    readonly NAMESPACE="${2:-"meneva-ph"}"
+    ;;
+"meneva-um")
+    readonly PROJECT="meneva"
+    readonly CLUSTER="meneva-1"
+    readonly NAMESPACE="${2:-"meneva-um"}"
+    ;;
+"nike-test")
+    readonly PROJECT="vinka-test"
+    readonly CLUSTER="nike-autopilot"
+    readonly NAMESPACE="${2:-"nike-test"}"
+    REGIONAL="true"
+    ;;
+"nike-test-bench")
+    readonly PROJECT="vinka-test"
+    readonly CLUSTER="nike-autopilot"
+    readonly NAMESPACE="${2:-"nike-test-bench"}"
+    REGIONAL="true"
+    ;;
+"porvoo-mh")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"porvoo-mh"}"
+    ;;
+"rabbit-test")
+    readonly PROJECT="vinka-test"
+    readonly CLUSTER="rabbitmq-cluster-1"
+    readonly NAMESPACE="${2:-"rabbitmq"}"
+    ;;
+"rabbit-prod")
+    readonly PROJECT="cabonline-vinka"
+    readonly CLUSTER="rabbitmq"
+    readonly NAMESPACE="${2:-"rabbitmq"}"
+    ;;
+"riihimaki-mh")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"riihimaki-mh"}"
+    ;;
+"sw-seinajoki")
+    readonly PROJECT="sitowise"
+    readonly CLUSTER="prod-1"
+    readonly NAMESPACE="${2:-"sw-seinajoki"}"
+    ;;
+"taksi-itasuomi")
+    readonly PROJECT="sitowise"
+    readonly CLUSTER="prod-1"
+    readonly NAMESPACE="${2:-"taksi-itasuomi"}"
+    ;;
+"taksikuutio")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"taksikuutio-esoteplus"}"
+    ;;
+"taksikuutio-esoteplus")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"taksikuutio-esoteplus"}"
+    ;;
+"tuomi-prod")
+    readonly PROJECT="tuomi-logistiikka"
+    readonly CLUSTER="tuomi"
+    readonly NAMESPACE="${2:-"tuomi-prod"}"
+    ;;
+"tuomi-test")
+    readonly PROJECT="vinka-test"
+    readonly CLUSTER="test-1"
+    readonly NAMESPACE="${2:-"tuomi-test"}"
+    ;;
+"tuomi-yv")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="tuomi"
+    readonly NAMESPACE="${2:-"tuomi-yv"}"
+    ;;
+"uki-kyyti")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"uki-kyyti"}"
+    ;;
+"ouka")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="prod-2"
+    readonly NAMESPACE="${2:-"ouka"}"
+    ;;
+"watchdog")
+    readonly PROJECT="vinka-224008"
+    readonly CLUSTER="infra"
+    readonly NAMESPACE="${2:-"watchdog"}"
+    ;;
+*)
+    echo "Unrecognized env ${GCP_ENV}" >&2
+    exit 1
+esac
+
+echo "PROJECT ${PROJECT} | CLUSTER ${CLUSTER} | NAMESPACE ${NAMESPACE} | ZONE ${ZONE} | REGION ${REGION}"
+
+gcloud config set project $PROJECT
+gcloud config set compute/region $REGION
+# In case Regional cluster then omit zone
+if [ $REGIONAL == "false" ]
+then
+    gcloud config set compute/zone $ZONE
+    gcloud container clusters get-credentials $CLUSTER
+else
+    gcloud container clusters get-credentials $CLUSTER --region $REGION --project $PROJECT
+fi
+kubectl config set-context $(kubectl config current-context) --namespace $NAMESPACE

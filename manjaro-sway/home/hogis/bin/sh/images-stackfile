@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat ~/Repos/ginfra/templates/stack-template.yaml | grep image: | rev | cut -d '/' -f 1 | rev | tr -s ' ' | sort

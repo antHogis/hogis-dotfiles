@@ -1,0 +1,7 @@
+#!/bin/sh
+
+test $1 || (echo "No repo arg provided" ; exit 1)
+
+git clone "git@bitbucket.org:capricans/${1}.git"
+cd $1
+

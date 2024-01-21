@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Port forwards rabbit of gcloud to 5682
+
+if test -z "$1"; then
+    >&2 echo "ERROR: provide namespace as first argument"
+    exit 1
+fi
+
+if test ! -z "$2"; then
+    gcloud container clusters get-credentials $2
+fi
+
+POD_NAME=$(kubectl get pod -n "$1" | grep rabbit | cut -d ' ' -f 1 )
+
+kubectl -n "$1" port-forward "$POD_NAME" 5682:5672

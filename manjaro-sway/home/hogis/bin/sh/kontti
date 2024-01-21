@@ -1,0 +1,2 @@
+#!/bin/sh
+docker container ls | grep "$1" | cut -d ' ' -f 1 | tr -d " \t\n\r"

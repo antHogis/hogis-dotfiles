@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+const readLine = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+const expression = process.argv.slice(2).reduce((p, c) => p + c, '');
+
+if (expression) {
+    evaluateAndPrint(expression);
+    readLine.close();
+} else {
+    promptExpressions(readLine)
+}
+
+function evaluateAndPrint(expression) {
+    console.log(eval(expression));
+}
+
+function promptExpressions() {
+    readLine.question('math> ', (answer) => {
+        if (answer != 'q') {
+            evaluateAndPrint(answer);
+            promptExpressions();
+        } else {
+            readLine.close();
+        }
+    })
+}

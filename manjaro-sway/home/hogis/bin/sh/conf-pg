@@ -1,0 +1,31 @@
+#!/bin/env bash
+
+case $1 in
+"test")
+    echo export PGHOST="test-upc-vinka-prod.aivencloud.com"
+    echo export PGPORT=14183
+    echo export PGSSLMODE="require"
+    echo export PGUSER=vinkadev
+    echo export PGPASSWORD=$(gcloud secrets versions access 1 --secret=global-aiven-prod-pass --project vinka-224008)
+    ;;
+"prod")
+    echo export PGHOST="pg-prod-aws-vinka-prod.aivencloud.com"
+    echo export PGPORT=14183
+    echo export PGSSLMODE="require"
+    echo export PGUSER=vinkadev
+    echo export PGPASSWORD=$(gcloud secrets versions access 1 --secret=global-aiven-prod-pass --project vinka-224008)
+    ;;
+"dev")
+    echo export PGHOST="localhost"
+    echo export PGPORT=5432
+    echo export PGSSLMODE="allow"
+    echo export PGUSER=vinka
+    echo export PGPASSWORD=vinka
+    ;;
+*)
+    logger ERROR "Unrecognized env ${ENV}, expected one the following: test, prod, dev."
+    exit 1
+    ;;
+esac
+
+

@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+kubectl config view --minify -o jsonpath='{..namespace}' && echo
+
