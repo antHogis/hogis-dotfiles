@@ -37,9 +37,6 @@ export EDITOR=/usr/bin/vim
 setopt HIST_IGNORE_SPACE
 bindkey -v
 
-# NVM
-source /usr/share/nvm/init-nvm.sh
-
 # SSH
 eval $(keychain --eval --quiet ~/.ssh/id_rsa) 
 
@@ -52,15 +49,4 @@ if [ -f '/home/hogis/pkg/google-cloud-sdk/path.zsh.inc' ]; then . '/home/hogis/p
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/hogis/pkg/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/hogis/pkg/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Android and java
-export ANDROID_HOME="/home/hogis/Android/Sdk"
-export JAVA_HOME=/usr/lib/jvm/default
-export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$JAVA_HOME/bin"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-
-# Go
-export GOPATH="/home/hogis/.go"
-export GOBIN="/home/hogis/.go/bin"
-export PATH="$PATH:$GOBIN"
 

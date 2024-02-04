@@ -33,6 +33,20 @@ fi
 # Disable warnings by OpenCV
 export OPENCV_LOG_LEVEL=ERROR
 
+# Android and java
+export ANDROID_HOME="/home/hogis/Android/Sdk"
+export JAVA_HOME=/usr/lib/jvm/default
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$JAVA_HOME/bin"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+
+# Go
+export GOPATH="/home/hogis/.go"
+export GOBIN="/home/hogis/.go/bin"
+export PATH="$PATH:$GOBIN"
+
+# NVM
+. /usr/share/nvm/init-nvm.sh
+
 set -a
 . "$HOME/.config/user-dirs.dirs"
 set +a
