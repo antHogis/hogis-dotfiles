@@ -1,0 +1,57 @@
+{
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x86",
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.intelliSenseEngineFallback": "enabled",
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "autopep8.args": [
+        "--max-line-length 100"
+    ],
+    "clang-format.fallbackStyle": "Chromium",
+    "cmake.configureOnOpen": true,
+    "cmake.showOptionsMovedNotification": false,
+    "editor.codeActionsOnSave": {},
+    "editor.find.cursorMoveOnType": false,
+    "editor.fontFamily": "'JetBrainsMono NF', 'Droid Sans Mono',  monospace, 'Droid Sans Fallback'",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modificationsIfAvailable",
+    "editor.inlayHints.enabled": "off",
+    "editor.minimap.enabled": false,
+    "editor.parameterHints.enabled": false,
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "\\.go$",
+                "cmd": "golines ${file} -w"
+            }
+        ]
+    },
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "python.defaultInterpreterPath": "/bin/python",
+    "python.languageServer": "Pylance",
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.fontFamily": "'JetBrainsMono NF', monospace",
+    "terminal.integrated.scrollback": 10000,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-f>": false,
+        "<C-c>": false,
+        "<C-w>": false,
+        "<C-h>": false,
+        "<C-k>": false,
+        "<C-p>": false
+    },
+    "vim.smartRelativeLine": true,
+    "vim.useSystemClipboard": true,
+    "window.openFoldersInNewWindow": "on",
+    "workbench.colorTheme": "Darcula"
+}
