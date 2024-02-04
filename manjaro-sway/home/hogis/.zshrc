@@ -1,7 +1,6 @@
 # Use powerline
 USE_POWERLINE="true"
 
-
 # Has weird character width
 # Example:
 #    is not a diamond
@@ -36,6 +35,7 @@ export EDITOR=/usr/bin/vim
 
 # Options
 setopt HIST_IGNORE_SPACE
+bindkey -v
 
 # NVM
 source /usr/share/nvm/init-nvm.sh
