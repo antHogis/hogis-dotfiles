@@ -1,4 +1,10 @@
 #!/bin/env bash
 
-kubectl config view --minify -o jsonpath='{..namespace}' && echo
+set -euo pipefail
+
+if [[ "${1:-""}" == "" ]]; then
+    kubectl config view --minify -o jsonpath='{..namespace}' && echo
+else
+    kubectl config set-context --current --namespace="${1}"
+fi 
 

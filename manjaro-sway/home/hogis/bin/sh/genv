@@ -29,6 +29,11 @@ case $GCP_ENV in
     readonly NAMESPACE="${2:-"cabonline"}"
     REGIONAL="true"
     ;;
+"col-test")
+    readonly PROJECT="vinka-test"
+    readonly CLUSTER="test-1"
+    readonly NAMESPACE="${2:-"col-test"}"
+    ;;
 "demo")
     readonly PROJECT="vinka-test"
     readonly CLUSTER="test-1"
