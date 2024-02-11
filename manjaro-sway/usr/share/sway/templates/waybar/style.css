@@ -64,6 +64,8 @@ window#waybar {
 #custom-clipboard,
 #custom-zeit,
 #custom-dnd,
+#custom-valent,
+#custom-idle_inhibitor,
 #bluetooth,
 #battery,
 #clock,
@@ -73,7 +75,6 @@ window#waybar {
 #network,
 #pulseaudio,
 #temperature,
-#idle_inhibitor,
 #backlight,
 #language,
 #custom-adaptive-light,
@@ -203,4 +204,8 @@ window#waybar {
 #custom-wf-recorder {
     color: @error_color;
     padding-right: 10px;
+}
+
+#custom-valent.dangerously-empty {
+    color: @warning_color;
 }
