@@ -44,8 +44,8 @@ export GOPATH="/home/hogis/.go"
 export GOBIN="/home/hogis/.go/bin"
 export PATH="$PATH:$GOBIN"
 
-# NVM
-. /usr/share/nvm/init-nvm.sh
+#  Ripgrep
+export RIPGREP_CONFIG_PATH="/home/hogis/.ripgreprc"
 
 set -a
 . "$HOME/.config/user-dirs.dirs"
@@ -57,3 +57,4 @@ if [ -n "$(ls "$HOME"/.config/profile.d 2>/dev/null)" ]; then
         . "$f"
     done
 fi
+
