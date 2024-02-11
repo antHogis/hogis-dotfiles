@@ -10,6 +10,8 @@ local lspconfig = require('lspconfig')
 lspconfig.clangd.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.gopls.setup({})
+lspconfig.pylsp.setup({})
+lspconfig.bashls.setup({})
 
 local cmp = require('cmp')
 

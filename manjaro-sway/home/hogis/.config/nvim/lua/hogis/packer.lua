@@ -45,5 +45,7 @@ return require('packer').startup(function(use)
 			require("aerial").setup()
 		end,
 	})
+
+   use 'APZelos/blamer.nvim'
 end)
 
