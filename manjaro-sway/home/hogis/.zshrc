@@ -35,7 +35,7 @@ export EDITOR=/usr/bin/vim
 
 # Options
 setopt HIST_IGNORE_SPACE
-bindkey -v
+# bindkey -v
 
 # SSH
 eval $(keychain --eval --quiet ~/.ssh/id_rsa) 
@@ -50,3 +50,8 @@ if [ -f '/home/hogis/pkg/google-cloud-sdk/path.zsh.inc' ]; then . '/home/hogis/p
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/hogis/pkg/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/hogis/pkg/google-cloud-sdk/completion.zsh.inc'; fi
 
+# NVM
+if ! command -v nvm &> /dev/null
+then
+    source /usr/share/nvm/init-nvm.sh
+fi
