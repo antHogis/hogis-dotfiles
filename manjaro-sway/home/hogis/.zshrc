@@ -20,6 +20,11 @@ fi
 # plugins=(git docker docker-compose)
 # source $ZSH/oh-my-zsh.sh
 
+# Path & env
+HOMEBIN="/home/hogis/bin/"
+export PATH=$PATH:${HOMEBIN}js:${HOMEBIN}py:${HOMEBIN}sh:${HOMEBIN}/etc:
+export EDITOR=/usr/bin/vim
+
 # Aliases
 alias l="ls -CF"
 alias ll="ls -FAlh"
@@ -27,11 +32,13 @@ alias la="ls -AF"
 alias duls="du -sh ./*"
 alias git="noglob git"
 alias xo="xdg-open"
+alias vim="nvim"
 
-# Path & env
-HOMEBIN="/home/hogis/bin/"
-export PATH=$PATH:${HOMEBIN}js:${HOMEBIN}py:${HOMEBIN}sh:${HOMEBIN}/etc:
-export EDITOR=/usr/bin/vim
+goto() {
+	ALIAS=$1
+	DIR=$(~/bin/sh/get-dir-by-alias.sh $ALIAS)
+	cd $DIR
+}
 
 # Options
 setopt HIST_IGNORE_SPACE
@@ -55,3 +62,6 @@ if ! command -v nvm &> /dev/null
 then
     source /usr/share/nvm/init-nvm.sh
 fi
+
+export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
+
