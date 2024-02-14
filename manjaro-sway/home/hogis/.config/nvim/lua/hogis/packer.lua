@@ -46,6 +46,8 @@ return require('packer').startup(function(use)
 		end,
 	})
 
-   use 'APZelos/blamer.nvim'
+	use 'APZelos/blamer.nvim'
+
+	use 'airblade/vim-gitgutter' 
 end)
 
