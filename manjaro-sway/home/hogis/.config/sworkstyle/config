@@ -19,6 +19,7 @@
 [matching]
 'jetbrains-webstorm' = '󰅩'
 'brave-browser' = ''
+'/nvim .*/' = ''
 '/^.* - VIM$/' = ''
 'org.pwmt.zathura' = '󰈙'
 'foot' = '󰞷'
