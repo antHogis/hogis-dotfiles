@@ -130,8 +130,17 @@ esac
 
 # Misc aliases
 case $1 in
+dlc)
+	DIR="${HOME}/personal/daylog-c"
+	;;
+dotf)
+	DIR="${HOME}/personal/hogis-dotfiles"
+	;;
 ex)
 	DIR="${HOME}/experiment"
+	;;
+nvim)
+	DIR="${HOME}/.config/nvim"
 	;;
 esac
 
