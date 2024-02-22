@@ -40,6 +40,22 @@ goto() {
 	cd $DIR
 }
 
+ide() {
+    # Split windows vertically
+    swaymsg split vertical
+    # Open a terminal
+    swaymsg exec "\$term -D ${PWD}"
+    # Sleep to wait for terminal opening
+    sleep .25
+    # Resize terminal
+    swaymsg resize set height 20ppt
+    # Move focus back to original window
+    swaymsg focus up
+	# Open editor
+	nvim .
+}
+
+
 # Options
 setopt HIST_IGNORE_SPACE
 # bindkey -v

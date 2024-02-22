@@ -1,7 +1,14 @@
 -- Color scheme
-vim.cmd.colorscheme("darcula-dark")
---vim.o.background = "dark" -- or "light" for light mode
---vim.cmd([[colorscheme gruvbox]])
+-- SCHEME: darcula
+--vim.cmd.colorscheme("darcula-dark")
+-- SCHEME: gruvbox 
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+-- SCHEME: kanagawa
+-- vim.cmd("colorscheme kanagawa-dragon")
+-- SCHEME: Melange
+-- vim.opt.termguicolors = true
+-- vim.cmd.colorscheme 'melange'
 
 -- Line numbering
 vim.opt.number = true

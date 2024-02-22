@@ -15,12 +15,21 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
+	-- Color themes
+	use "ellisonleao/gruvbox.nvim"
+	use {
+		"rebelot/kanagawa.nvim",
+		-- config = function()
+		-- 	require('kanagawa').setup({
+		-- 		theme = 'lotus'
+		-- 	})
+		-- end,
+	}
 	use {
 		'xiantang/darcula-dark.nvim',
 		requires = {"nvim-treesitter/nvim-treesitter"}
 	}
-
-	use { "ellisonleao/gruvbox.nvim" }
+	use "savq/melange-nvim"
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -49,5 +58,19 @@ return require('packer').startup(function(use)
 	use 'APZelos/blamer.nvim'
 
 	use 'airblade/vim-gitgutter'
+
+	use({
+		"NeogitOrg/neogit",
+		requires = {
+			{"nvim-lua/plenary.nvim"        }, -- required
+			{"sindrets/diffview.nvim"       }, -- optional - Diff integration
+			{"nvim-telescope/telescope.nvim"}  -- optional
+		},
+		config = function()
+			require('neogit').setup({})
+		end,
+	})
+
+	use 'mfussenegger/nvim-dap'
 end)
 
